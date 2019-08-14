@@ -49,7 +49,7 @@ const helloMessage = React.createElement(
 /**
  * something
  */
-class helloMessage extends React.Component{
+class HelloMessage extends React.Component{
     render(){
         return (
             <div class ='btn'>
@@ -60,7 +60,7 @@ class helloMessage extends React.Component{
 }
 
 ReactDOM.render(
-    <helloMessage/>, //helloMessage, <h1>Hello world</h1>
+    <HelloMessage/>, //helloMessage, <h1>Hello world</h1>
     document.getElementById('root')
 );
 
