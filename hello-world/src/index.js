@@ -143,13 +143,14 @@ const movieList =[
         starting : " Jake, Grace",
     },
     {
-        title: "harry potter",
+        title: "Harry potter",
         imdb : "9",
         starting : " emma watson, rupert, tom ",
     },
 ];
 
-function Movie(props) {
+//functional component method
+/* function Movie(props) {
     return <div>
         <h2>{props.title}</h2>
         <p>{props.imdb}</p>
@@ -169,6 +170,64 @@ function Cinema(props){ //composing component
             />
         })}
     </div>
+} */
+
+// class component method
+
+class Movie extends React.Component {
+    render(){
+        return <div>
+            <h2>{this.props.title}</h2>
+            <p>{this.props.imdb}</p>
+            <p>{this.props.staring}</p>
+        </div>
+    }
+}
+
+class Cinema extends React.Component{ 
+    constructor (props) {
+        super (props);
+
+        this.state = {
+            superpaiva: true,
+            open: false
+        }
+
+        this.toggleCampaign = this.toggleCampaign.bind(this);
+    }
+
+    toggleCampaign(){
+        this.state({
+            superpaiva:! this.state.superpaiva
+        });
+    }
+
+    render(){
+        console.log(this.props)
+    }
+    
+    render(){
+        console.log('The value of this.state.superpaiva is currently');
+        console.log(this.state.superpaiva);
+
+        return <div>
+            <div> The superpaiva is now up? 
+            {this.state.superpaiva ? <span>Yes!</span> :
+            <span>NOPE!</span>}
+            </div>
+
+        <button onClick={this.toggleCampaign}>update</button>
+        
+        {this.props.movies.map( (movie, index) => {
+            return <Movie 
+                key = {index}
+                title = {movie.title} 
+                imdb = {movie.imdb}
+                staring = {movie.staring}
+            />
+        })}
+    </div>
+    }
 }
 
 render(
